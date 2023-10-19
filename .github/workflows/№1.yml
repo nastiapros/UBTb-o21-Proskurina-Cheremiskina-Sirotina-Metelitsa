@@ -1,0 +1,28 @@
+from itertools import groupby
+
+def count_consecutive_characters(input_string):
+    max_count = 0
+    current_count = 1
+
+    for char, group in groupby(input_string):
+        # Вычисляем длину подряд идущей группы символов
+        group_length = len(list(group))
+        
+        if group_length > max_count:
+            max_count = group_length
+
+    return max_count
+
+def find_max_in_lists(lists):
+    max_element = max(max(lst) for lst in lists)
+    return max_element
+
+# Пример использования
+input_string = "AAABBBCCCCCDDDDD"
+lists = [[1, 2, 3], [4, 5, 6, 7], [8, 9]]
+
+max_consecutive_count = count_consecutive_characters(input_string)
+max_in_lists = find_max_in_lists(lists)
+
+print("Максимальное количество подряд идущих символов:", max_consecutive_count)
+print("Максимальный элемент в списках:", max_in_lists)
